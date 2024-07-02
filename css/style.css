@@ -530,6 +530,10 @@ a:focus {
   padding: 25px;
 }
 
+.logoImage{
+  height: 5vmin;
+  max-height: 35px;
+}
 .food_section .box .img-box img {
   max-width: 100%;
   max-height: 145px;
@@ -974,8 +978,7 @@ a:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
+  -webkit-box-align: center;      -ms-flex-align: center;
           align-items: center;
   color: #222831;
   width: 30px;
