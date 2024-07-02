@@ -4190,6 +4190,7 @@ input[type="button"].btn-block {
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
+  margin-right: 0 !important;
   list-style: none;
 }
 
@@ -8333,7 +8334,7 @@ button.bg-dark:focus {
 
 .mr-auto,
 .mx-auto {
-  margin-right: auto !important;
+  margin-right: auto;
 }
 
 .mb-auto,
