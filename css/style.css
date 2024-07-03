@@ -620,7 +620,7 @@ a:focus {
 }
 
 .about_section {
-  background: #222831;
+  background:url(/images/about-image.jpg);
   color: #ffffff;
 }
 
@@ -641,31 +641,20 @@ a:focus {
 }
 
 .about_section .img-box img {
-  width: 100%;
-  max-width: 445px;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 768px){
+  .about_section .img-box img {
+  width: 45vw;
   position: relative;
-  z-index: 2;
+  height: 35vh;
 }
 
-.about_section .detail-box p {
-  margin-top: 15px;
 }
+  
 
-.about_section .detail-box a {
-  display: inline-block;
-  padding: 10px 45px;
-  background-color: #ffbe33;
-  color: #ffffff;
-  border-radius: 45px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: none;
-  margin-top: 15px;
-}
-
-.about_section .detail-box a:hover {
-  background-color: #e69c00;
-}
 
 .book_section {
   position: relative;
