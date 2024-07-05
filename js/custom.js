@@ -28,12 +28,68 @@ $(window).on('load', function () {
         }
     })
 });
-
-
-// nice select
+//Time slots
 $(document).ready(function() {
-    $('select').niceSelect();
+    fetch("http://localhost:3500/api/available-time-slots") // Replace with your API endpoint
+      .then((response) => response.json())
+      .then((data) => {
+        var timeSelect = $("#time");
+
+        // Populate the select element with options
+        data.forEach((time) => {
+          console.log(time.startTime, time.endTime);
+          timeSelect.append(
+            '<option value="' +
+              time.startTime +
+              "-" +
+              time.endTime +
+              '">' +
+              time.startTime +
+              "</option>"
+          );
+        });
+      })
+      .catch((error) => {
+        // Handle errors
+        alert("An error occurred while fetching time slots: " + error);
+      });
+   })
+  // Fetch time slots from the API
+  
+//booking script
+$(document).ready(function () {
+  $("#bookingForm").on("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather the form data
+    var formData = {
+      name: $("#name").val(),
+      email: $("#email").val(),
+      contact: $("#phone").val(),
+      event_Type: $("#event").val(), // This field is optional
+      person: $("#persons").val(),
+      date: $("#date").val(),
+      startTime: $("#time").val(),
+    };
+      console.log(formData);
+    // Send the form data to the API
+    $.ajax({
+      url: "http://localhost:3500/api/bookings", // Replace with your API endpoint
+      type: "POST",
+      data: JSON.stringify(formData),
+      contentType: "application/json",
+      success: function (response) {
+        // Handle the response from the API
+        alert("Booking successful!");
+      },
+      error: function (xhr, status, error) {
+        // Handle errors
+        alert("An error occurred: " + error);
+      },
+    });
   });
+});
+
 
 /** google_map js **/
 function myMap() {

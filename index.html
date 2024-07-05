@@ -1083,55 +1083,39 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form_container">
-          <form>
-            <div>
-              <input type="text" class="form-control" placeholder="Your Name" />
-            </div>
-            <div>
-              <input type="text" class="form-control" placeholder="Phone Number" />
-            </div>
-            <div>
-              <input type="email" class="form-control" placeholder="Your Email" />
-            </div>
-            <div>
-              <input type="text" class="form-control" placeholder="Occasion (optional)" />
-            </div>
-            <div>
-              <select class="form-control nice-select wide">
-                <option value="" disabled selected>
-                  How many persons?
-                </option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-            <div>
-              <input type="date" class="form-control">
-            </div>
-            <div>
-              <select class="form-control nice-select wide">
-                <option value="" disabled selected>
-                  Select Time Slot
-                </option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="1:00 PM">1:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="5:00 PM">5:00 PM</option>
-                <option value="6:00 PM">6:00 PM</option>
-                <option value="7:00 PM">7:00 PM</option>
-                <option value="8:00 PM">8:00 PM</option>
-              </select>
-            </div>
-            <div class="btn_box">
-              <button>
-                Book Now
-              </button>
-            </div>
-          </form>
+                    <form id="bookingForm" action="">
+                      <div>
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+                        </div>
+                        <div>
+                        <input type="text" id="phone" class="form-control" placeholder="Phone Number" required />
+                        </div>
+                        <div>
+                        <input type="email" id="email" class="form-control" placeholder="Your Email" required />
+                        </div>
+                        <div>                   
+                    <input type="text" id="persons" class="form-control" placeholder="How many persons?"/>                   
+                        </div>
+                        <div>
+                        <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <div>
+                        <select id="time" class="form-control nice-select wide" required>
+                          <option value="" disabled selected>
+                            Select Time Slot
+                          </option>
+                      <!--time slot form api-->
+                        </select>
+                        </div>
+                      <div>
+                        <input type="text" id="event" class="form-control" placeholder="Event Type (Optional)">
+                      </div>
+                      <div class="btn_box">
+                        <button type="submit">
+                          Book Now
+                        </button>
+                        </div>
+                        </form>
         </div>
       </div>
       <div class="col-md-6">
