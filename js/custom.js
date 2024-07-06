@@ -37,7 +37,7 @@ $(document).ready(function() {
 
         // Populate the select element with options
         data.forEach((time) => {
-          console.log(time.startTime, time.endTime);
+
           timeSelect.append(
             '<option value="' +
               time.startTime +
@@ -71,7 +71,6 @@ $(document).ready(function () {
       date: $("#date").val(),
       startTime: $("#time").val(),
     };
-      console.log(formData);
     // Send the form data to the API
     $.ajax({
       url: "http://localhost:3500/api/bookings", // Replace with your API endpoint
@@ -107,7 +106,6 @@ $(document).ready(function () {
       let compressedImage = await compressionFunction(image);
       formData.append("image", compressedImage);
     }
- console.log(formData);
     $.ajax({
       url: "http://localhost:3500/api/create-Ratings",
       type: "POST",
