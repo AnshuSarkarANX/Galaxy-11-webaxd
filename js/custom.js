@@ -100,7 +100,7 @@ $(document).ready(function () {
     let image = $("#images")[0].files[0]; // Get the first image file
 
     formData.append("name", name);
-    formData.append("rating", rating);
+    formData.append("ratings", rating);
     formData.append("description",description);
 
     if (image) {
@@ -112,6 +112,8 @@ $(document).ready(function () {
       url: "http://localhost:3500/api/create-Ratings",
       type: "POST",
       data: formData,
+      processData: false, // prevent jQuery from automatically transforming the data into a query string
+      contentType: false, // prevent jQuery from setting the Content-Type request header
       success: function (response) {
         alert("Review submitted successfully!");
       },
