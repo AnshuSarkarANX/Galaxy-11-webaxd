@@ -89,6 +89,84 @@ $(document).ready(function () {
     });
   });
 });
+$(document).ready(function () {
+  $("#reviewForm").on("submit", async function (event) {
+    event.preventDefault();
+
+    let formData = new FormData();
+    let name = $("#name").val();
+    let rating = $("#stars").val();
+    let description = $("#description").val();
+    let image = $("#images")[0].files[0]; // Get the first image file
+
+    formData.append("name", name);
+    formData.append("rating", rating);
+    formData.append("description",description);
+
+    if (image) {
+      let compressedImage = await compressionFunction(image);
+      formData.append("image", compressedImage);
+    }
+ console.log(formData);
+    $.ajax({
+      url: "http://localhost:3500/api/create-Ratings",
+      type: "POST",
+      data: formData,
+      success: function (response) {
+        alert("Review submitted successfully!");
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.error("Error:", textStatus, errorThrown);
+        alert("Error submitting review.");
+      },
+    });
+  });
+
+  async function compressionFunction(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          const maxWidth = 800; // Set maximum width
+          const maxHeight = 800; // Set maximum height
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > maxWidth) {
+              height *= maxWidth / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width *= maxHeight / height;
+              height = maxHeight;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob(
+            (blob) => {
+              resolve(blob);
+            },
+            "image/webp",
+            0.1
+          );
+        };
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  }
+});
+
 
 
 /** google_map js **/
