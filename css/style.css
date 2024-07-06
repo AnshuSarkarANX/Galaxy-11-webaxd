@@ -31,7 +31,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: 'Dancing Script', cursive;
 }
 
@@ -572,8 +573,10 @@ a:focus {
 }
 
 .logoImage{
-  height: 6vmin;
-  max-height: 100%;
+  height: 10vmin;
+  max-height: 150px;
+  min-height: 55px;
+
 }
 .food_section .box .img-box img {
   max-width: 100%;
