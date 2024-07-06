@@ -9,6 +9,7 @@
 
 
 // isotope js
+const api = "http://localhost:3500/";
 $(window).on('load', function () {
     $('.filters_menu li').click(function () {
         $('.filters_menu li').removeClass('active');
@@ -28,32 +29,122 @@ $(window).on('load', function () {
         }
     })
 });
-//Time slots
+
 $(document).ready(function() {
-    fetch("http://localhost:3500/api/available-time-slots") // Replace with your API endpoint
+  //Banner
+  fetch(api + "api/banner")
+    .then((response) => response.json())
+    .then((image) => {
+      const carousel = $("#carouselDiv");
+      // Populate the select element with options
+      image.data.forEach((data) => {
+        carousel.append(
+          `"<div class="carousel-item"  style="height: 100%;">
+          <img src="${api}${data.image}" alt="Image 3" style="width: 100%; height: 100%; object-fit: cover;"/>
+          </div>"`
+        );
+      });
+    })
+    .catch((error) => {
+      // Handle errors
+      alert("An error occurred while fetching banner images");
+      console.log(error);
+    });
+    //offers
+    fetch(api + "api/offer")
       .then((response) => response.json())
-      .then((data) => {
-        var timeSelect = $("#time");
+      .then((offer) => {
+        const offerRow = $("#offerRow");
 
         // Populate the select element with options
-        data.forEach((time) => {
-
-          timeSelect.append(
-            '<option value="' +
-              time.startTime +
-              "-" +
-              time.endTime +
-              '">' +
-              time.startTime +
-              "</option>"
+        offer.data.forEach((data) => {
+          console.log(data);
+          offerRow.append(
+            `<div class="col-md-6  ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="${api}${data.image}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  ${data.offer_name}
+                </h5>
+                <h6>
+                  <span>${data.offer_percentage}</span> Off
+                </h6>
+              </div>
+            </div>
+          </div>`
           );
         });
       })
       .catch((error) => {
         // Handle errors
-        alert("An error occurred while fetching time slots: " + error);
+        alert("An error occurred while fetching offers");
+        console.log(error);
       });
-   })
+ //menu     
+          fetch(api + "api/products")
+            .then((response) => response.json())
+            .then((menu) => {
+              const menuGrid = $("#menuGrid");
+
+              // Populate the select element with options
+              menu.data.forEach((data) => {
+                console.log(data);
+                menuGrid.append(
+                  `<div class="col-sm-6 col-lg-4 all pizza">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="${api}${data.image}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                  ${data.product_name}
+                  </h5>
+                  <p>
+                    ${data.description}
+                  </p>
+                    <h6 class="text-center">
+                      ${data.price}
+                    </h6>
+                </div>
+              </div>
+            </div>
+          </div>`
+                );
+              });
+            })
+            .catch((error) => {
+              // Handle errors
+              alert("An error occurred while fetching menu");
+              console.log(error);
+            });
+  //Time slots
+  fetch("http://localhost:3500/api/available-time-slots") // Replace with your API endpoint
+    .then((response) => response.json())
+    .then((data) => {
+      var timeSelect = $("#time");
+
+      // Populate the select element with options
+      data.forEach((time) => {
+        timeSelect.append(
+          '<option value="' +
+            time.startTime +
+            "-" +
+            time.endTime +
+            '">' +
+            time.startTime +
+            "</option>"
+        );
+      });
+    })
+    .catch((error) => {
+      // Handle errors
+      alert("An error occurred while fetching time slots: " + error);
+    });
+})
   // Fetch time slots from the API
   
 //booking script
