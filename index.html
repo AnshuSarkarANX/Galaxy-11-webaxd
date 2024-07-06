@@ -46,7 +46,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="/">
-            <img class="logoImage" src="./images/Galaxy-11.svg"/>
+            <img class="logoImage" src="./images/logo 2 1.svg"/>
 
           </a>
 
@@ -1151,20 +1151,35 @@
           <input type="text" id="name" class="form-control" placeholder="Your Name" required />
         </div>
         <div>
+          <input type="text" id="event" class="form-control" placeholder="Share your experience (optional)">
+        </div>
+        <div>
           <select id="time" class="form-control nice-select wide" required>
             <option value="" disabled selected>
-              Select Time Slot
+              Rate us
             </option>
-            <!--time slot form api-->
+            <option value="1" >
+              1 star
+            </option>
+            <option value="2" >
+              2 star
+            </option>
+            <option value="3" >
+              3 star
+            </option>
+            <option value="4" >
+              4 star
+            </option>
+            <option value="5" >
+              5 star
+            </option> 
           </select>
         </div>
         <div class="mb-3">
-          <label for="formFileMultiple" class="form-label">Submit images</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple>
+          <label for="formFileMultiple" class="form-label">Upload food image (optional)</label>
+          <input class="form-control" type="file" id="formFile">
         </div>
-        <div>
-          <input type="text" id="event" class="form-control" placeholder="Event Type (Optional)">
-        </div>
+        
         <div class="btn_box">
           <button type="submit">
             Submit review

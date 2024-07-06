@@ -533,8 +533,9 @@ a:focus {
 }
 
 .logoImage{
-  height: 5vmin;
-  max-height: 35px;
+  height: 10vmin;
+  max-height: 150px;
+  min-height: 55px;
 }
 .food_section .box .img-box img {
   max-width: 100%;
