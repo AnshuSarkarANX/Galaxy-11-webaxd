@@ -7,7 +7,7 @@ body {
 }
 
 .layout_padding {
-  padding: 90px 0;
+  /* padding: 0px 0; */
 }
 
 .layout_padding2 {
@@ -31,7 +31,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: 'Dancing Script', cursive;
 }
 
@@ -312,18 +313,90 @@ a:focus {
 
 /*end header section*/
 /* slider section */
+.carousel-item img {
+  height: 500px; /* Adjust this value to your desired height */
+  width: 100vw;
+  object-fit: cover; /* This ensures the image covers the area without distortion */
+}
+
+.carousel-container {
+  position: relative;
+}
+
+/* .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+} */
+
+/* about animation text start */
+/* .animated-section {
+  position: relative;
+}
+
+.animated-heading, .animated-text {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.animated-heading {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  font-size: 2em;
+  color: white;
+}
+
+.animated-text {
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  font-size: 1.2em;
+  color: white;
+}
+
+.animated-section:hover .animated-heading,
+.animated-section:hover .animated-text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+} */
+/* about animation text end */
+.overlay .detail-box {
+  position: relative;
+ 
+  bottom: 0;
+  left: 0;
+  
+  color: white;
+  padding: 10px;
+  max-width: 600px; 
+}
+
+.overlay .btn1 {
+  background-color: #ff6347;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
 .slider_section {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
-  padding: 45px 0 75px 0;
+  /* padding: 45px 0 0 0; */
 }
 
 .slider_section .row {
@@ -520,20 +593,22 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 215px;
-  border-radius: 0 0 0 45px;
+  border-radius: 0 0 45px 45px;
   margin: -1px;
   padding: 25px;
 }
 
 .logoImage{
-  height: 5vmin;
-  max-height: 35px;
+  height: 10vmin;
+  max-height: 150px;
+  min-height: 55px;
+
 }
 .food_section .box .img-box img {
   max-width: 100%;
@@ -620,7 +695,6 @@ a:focus {
 }
 
 .about_section {
-  background: #222831;
   color: #ffffff;
 }
 
@@ -641,31 +715,20 @@ a:focus {
 }
 
 .about_section .img-box img {
-  width: 100%;
-  max-width: 445px;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 768px){
+  .about_section .img-box img {
+  width: 45vw;
   position: relative;
-  z-index: 2;
+  height: 35vh;
 }
 
-.about_section .detail-box p {
-  margin-top: 15px;
 }
+  
 
-.about_section .detail-box a {
-  display: inline-block;
-  padding: 10px 45px;
-  background-color: #ffbe33;
-  color: #ffffff;
-  border-radius: 45px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: none;
-  margin-top: 15px;
-}
-
-.about_section .detail-box a:hover {
-  background-color: #e69c00;
-}
 
 .book_section {
   position: relative;
