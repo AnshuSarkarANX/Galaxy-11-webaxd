@@ -42,7 +42,8 @@
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
       <div class="carousel-inner" style="height: 100%;" id="carouselDiv">
         <div class="carousel-item active" style="height: 100%;">
-          <img src="/images/hero-bg.jpg" alt="Image 1" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="/images/Black Minimal Grand Opening Banner.jpg" alt="Image 1"
+            style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
       <ol class="carousel-indicators" style="position: absolute; bottom: 10px; left: 10px;">
@@ -63,7 +64,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
 
           <a class="navbar-brand" href="/">
-            <img class="logoImage" src="./images/logo 2 1.svg"/>
+            <img class="logoImage" src="./images/logo 2 1.svg" />
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -89,22 +90,19 @@
       </div>
     </header>
     <!-- end header section -->
-    <!-- slider section -->
+
     <section class="slider_section" style="position: relative; height: 100vh; z-index: 1;">
       <div class="overlay">
         <div class="detail-box" style="text-align: center; color: white;">
-          <h1>Fast Food Restaurant</h1>
-          <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam
-            esse error unde.</p>
-          <div class="btn-box">
-            <a href="" class="btn1"
-              style="color: white; background: #ff5722; padding: 10px 20px; text-decoration: none;">Order Now</a>
-
-          </div>
         </div>
+        <div class="btn-box" style="position: absolute; bottom: 20px; left: 20px;">
+          <a href="#bookingSection" class="btn btn-primary"
+            style="color: white; background: #ff5722; padding: 10px 20px; text-decoration: none; border-radius: 20px; box-shadow: 3px 3px 5px rgba(172, 111, 53, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);">Book
+            Table</a>
+        </div>
+
       </div>
     </section>
-    <!-- end slider section -->
   </div>
 
 
@@ -163,9 +161,9 @@
                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
                     sed eaque
                   </p>
-                                    <h6 class="text-center">
-                                      $10
-                                    </h6>
+                  <h6 class="text-center">
+                    $10
+                  </h6>
                 </div>
               </div>
             </div>
@@ -184,72 +182,79 @@
 
   <!-- about section -->
 
-  <section class="about_section layout_padding">
-    <div class="container  ">
-          <div class="img-box">
-            <img src="images/about-image.jpg" alt="">
+  <section style="position: relative; width: 100%; height: 100vh;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('images/cups.jpeg') no-repeat center center/cover;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; padding: 20px;">
+            <h1>Galaxy 11 Cafe</h1>
+            <p>Discovering the joy of slowing down <br> and being present in the moment <br> at the cafe.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+  <!-- end about section -->
+
+  <!-- book section -->
+  <section class="book_section layout_padding" id="bookingSection">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Book A Table
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form id="bookingForm" action="">
+              <div>
+                <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+              </div>
+              <div>
+                <input type="text" id="phone" class="form-control" placeholder="Phone Number" required />
+              </div>
+              <div>
+                <input type="email" id="email" class="form-control" placeholder="Your Email" required />
+              </div>
+              <div>
+                <input type="text" id="persons" class="form-control" placeholder="How many persons?" />
+              </div>
+              <div>
+                <input type="date" id="date" class="form-control" required>
+              </div>
+              <div>
+                <select id="time" class="form-control nice-select wide" required>
+                  <option value="" disabled selected>
+                    Select Time Slot
+                  </option>
+                  <!--time slot form api-->
+                </select>
+              </div>
+              <div>
+                <input type="text" id="event" class="form-control" placeholder="Event Type (Optional)">
+              </div>
+              <div class="btn_box">
+                <button type="submit">
+                  Book Now
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3642.490945648964!2d88.2543449753463!3d24.084224678444098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA1JzAzLjIiTiA4OMKwMTUnMjQuOSJF!5e0!3m2!1sen!2sin!4v1720372190003!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- end about section -->
-
-  <!-- book section -->
-<section class="book_section layout_padding" id="bookingSection">
-  <div class="container">
-    <div class="heading_container">
-      <h2>
-        Book A Table
-      </h2>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form_container">
-                    <form id="bookingForm" action="">
-                      <div>
-                        <input type="text" id="name" class="form-control" placeholder="Your Name" required />
-                        </div>
-                        <div>
-                        <input type="text" id="phone" class="form-control" placeholder="Phone Number" required />
-                        </div>
-                        <div>
-                        <input type="email" id="email" class="form-control" placeholder="Your Email" required />
-                        </div>
-                        <div>                   
-                    <input type="text" id="persons" class="form-control" placeholder="How many persons?"/>                   
-                        </div>
-                        <div>
-                        <input type="date" id="date" class="form-control" required>
-                        </div>
-                        <div>
-                        <select id="time" class="form-control nice-select wide" required>
-                          <option value="" disabled selected>
-                            Select Time Slot
-                          </option>
-                      <!--time slot form api-->
-                        </select>
-                        </div>
-                      <div>
-                        <input type="text" id="event" class="form-control" placeholder="Event Type (Optional)">
-                      </div>
-                      <div class="btn_box">
-                        <button type="submit">
-                          Book Now
-                        </button>
-                        </div>
-                        </form>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="map_container">
-          <div id="googleMap"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
   <!-- end book section -->
 
@@ -262,63 +267,64 @@
           What Says Our Customers
         </h2>
       </div>
-<div class="heading_container">
-  <h3>
-    Give your review
-  </h3>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="form_container">
-      <form id="reviewForm" action="">
-        <div>
-          <input type="text" id="name" class="form-control" placeholder="Your Name" required />
-        </div>
-        <div>
-          <textarea type="text" id="description" class="form-control" placeholder="Share your experience (optional)" rows="10">
+      <div class="heading_container">
+        <h3>
+          Give your review
+        </h3>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form id="reviewForm" action="">
+              <div>
+                <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+              </div>
+              <div>
+                <textarea type="text" id="description" class="form-control"
+                  placeholder="Share your experience (optional)" rows="10">
             </textarea>
+              </div>
+              <div>
+                <select id="stars" class="form-control nice-select wide" required>
+                  <option value="" disabled selected>
+                    Rate us
+                  </option>
+                  <option value="1">
+                    1 star
+                  </option>
+                  <option value="2">
+                    2 star
+                  </option>
+                  <option value="3">
+                    3 star
+                  </option>
+                  <option value="4">
+                    4 star
+                  </option>
+                  <option value="5">
+                    5 star
+                  </option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Upload food image (optional)</label>
+                <input class="form-control" type="file" id="images">
+              </div>
+
+              <div class="btn_box">
+                <button type="submit">
+                  Submit review
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          <select id="stars" class="form-control nice-select wide" required>
-            <option value="" disabled selected>
-              Rate us
-            </option>
-            <option value="1" >
-              1 star
-            </option>
-            <option value="2" >
-              2 star
-            </option>
-            <option value="3" >
-              3 star
-            </option>
-            <option value="4" >
-              4 star
-            </option>
-            <option value="5" >
-              5 star
-            </option> 
-          </select>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div id="googleMap"></div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="formFileMultiple" class="form-label">Upload food image (optional)</label>
-          <input class="form-control" type="file" id="images">
-        </div>
-        
-        <div class="btn_box">
-          <button type="submit">
-            Submit review
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="map_container">
-      <div id="googleMap"></div>
-    </div>
-  </div>
-    </div>
+      </div>
   </section>
 
   <!-- end client section -->
@@ -362,8 +368,7 @@
               Galaxy 11 cafe
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin
-              words, combined with
+              Discovering the joy of slowing down and being present in the moment at the cafe.
             </p>
             <div class="footer_social">
               <a href="">
@@ -387,7 +392,7 @@
             Everyday
           </p>
           <p>
-            10.00 Am -10.00 Pm
+            5.30 pm -10.00 Pm
           </p>
         </div>
       </div>

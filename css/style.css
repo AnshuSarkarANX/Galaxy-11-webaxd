@@ -7,7 +7,7 @@ body {
 }
 
 .layout_padding {
-  padding: 90px 0;
+  /* padding: 0px 0; */
 }
 
 .layout_padding2 {
@@ -334,7 +334,39 @@ a:focus {
   height: 100%;
 } */
 
+/* about animation text start */
+/* .animated-section {
+  position: relative;
+}
 
+.animated-heading, .animated-text {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.animated-heading {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  font-size: 2em;
+  color: white;
+}
+
+.animated-text {
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  font-size: 1.2em;
+  color: white;
+}
+
+.animated-section:hover .animated-heading,
+.animated-section:hover .animated-text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+} */
+/* about animation text end */
 .overlay .detail-box {
   position: relative;
  
@@ -663,7 +695,6 @@ a:focus {
 }
 
 .about_section {
-  background:url(/images/about-image.jpg);
   color: #ffffff;
 }
 
