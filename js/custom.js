@@ -56,7 +56,6 @@ $(document).ready(function() {
       .then((offer) => {
         const offerRow = $("#offerRow");
 
-        // Populate the select element with options
         offer.data.forEach((data) => {
           console.log(data);
           offerRow.append(
@@ -89,7 +88,6 @@ $(document).ready(function() {
             .then((menu) => {
               const menuGrid = $("#menuGrid");
 
-              // Populate the select element with options
               menu.data.forEach((data) => {
                 console.log(data);
                 menuGrid.append(
@@ -144,9 +142,44 @@ $(document).ready(function() {
       // Handle errors
       alert("An error occurred while fetching time slots: " + error);
     });
-})
-  // Fetch time slots from the API
-  
+    //fetch Ratings
+
+  fetch(api + "api/ratings")
+    .then((response) => response.json())
+    .then((ratings) => {
+      const rating = $(".ratingcard");
+
+      ratings.data.forEach((data) => {
+        console.log(data);
+        // menuGrid.append(
+        //   `<div class="col-sm-6 col-lg-4 all pizza">
+        //     <div class="box">
+        //       <div>
+        //         <div class="img-box">
+        //           <img src="${api}${data.image}" alt="">
+        //         </div>
+        //         <div class="detail-box">
+        //           <h5>
+        //           ${data.product_name}
+        //           </h5>
+        //           <p>
+        //             ${data.description}
+        //           </p>
+        //             <h6 class="text-center">
+        //               ${data.price}
+        //             </h6>
+        //         </div>
+        //       </div>
+        //     </div>
+        //   </div>`
+        // );
+      });
+    })
+    .catch((error) => {
+      // Handle errors
+      alert("An error occurred while fetching ratings");
+      console.log(error);
+    });
 //booking script
 $(document).ready(function () {
   $("#bookingForm").on("submit", function (event) {
@@ -164,7 +197,7 @@ $(document).ready(function () {
     };
     // Send the form data to the API
     $.ajax({
-      url: "http://localhost:3500/api/bookings", // Replace with your API endpoint
+      url: api + "api/bookings", // Replace with your API endpoint
       type: "POST",
       data: JSON.stringify(formData),
       contentType: "application/json",
@@ -294,3 +327,4 @@ $(".client_owl-carousel").owlCarousel({
         }
     }
 });
+})

@@ -5,6 +5,12 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
+.ratingcard{
+  border:5px solid #ff6347;
+  height: 400px;
+  width: 400px;
+  
+}
 
 .layout_padding {
   /* padding: 0px 0; */
