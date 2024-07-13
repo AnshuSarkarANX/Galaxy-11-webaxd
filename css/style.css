@@ -5,12 +5,40 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
-.ratingcard{
-  border:5px solid #ff6347;
-  height: 400px;
-  width: 400px;
-  
-}
+@media(max-width:768px){ 
+            .rating-container{
+            display:flex;
+            justify-content: center;
+            }}
+            .wrapper{
+              display: flex;
+              gap: 20px;
+              width: 300px;
+              overflow-x: scroll;
+              scroll-snap-type: x mandatory;
+            }
+            .card{
+              scroll-snap-align: center;
+              box-sizing: border-box;
+              padding: 20px 30px;
+              flex-shrink: 0;
+            }
+
+            .rating-card {
+              width: 300px;
+              border: 1px inset rgb(225, 219, 219);
+              border-radius: 5px;
+              margin-bottom: 20px;
+            }
+
+            .rating-card > .item {
+              margin: 20px 25px 0;
+            }
+
+             .rating-card> .item img {
+              width: 200px;
+              margin-bottom: 20px;
+            }
 
 .layout_padding {
   /* padding: 0px 0; */
@@ -38,7 +66,9 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   font-family: 'Dancing Script', cursive;
 }
 
