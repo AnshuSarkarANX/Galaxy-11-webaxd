@@ -21,13 +21,18 @@
   <!--owl slider stylesheet -->
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- nice select  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
     integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
     crossorigin="anonymous" />
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
-
+  <!-- animate.css -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
@@ -95,9 +100,11 @@
       <div class="overlay">
         <div class="detail-box" style="text-align: center; color: white;">
         </div>
+
         <div class="btn-box" style="position: absolute; bottom: 32%; left: 27%; transform: translate(-50%, 50%);">
           <a href="#bookingSection" class="btn btn-primary"
             style="color: white; background: #ff5722; padding: 20px 40px; text-decoration: none; border-radius: 30px; ">Book
+
             Table</a>
         </div>
       </div>
@@ -145,7 +152,7 @@
         </h2>
       </div>
       <div class="filters-content">
-        <div class="row grid" id="menuGrid">
+        <div class="row grid" id="menuGrid_home">
           <div class="col-sm-6 col-lg-4 all pasta">
             <div class="box">
               <div>
@@ -191,12 +198,6 @@
       </div>
     </div>
   </section>
-
-
-
-
-
-
 
   <!-- end about section -->
 
@@ -264,29 +265,28 @@
 
   <!-- client section -->
 
-  <section class=" book_section client_section layout_padding-bottom">
+  <section class="book_section client_section layout_padding-bottom">
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45">
         <h2>
           What Says Our Customers
         </h2>
       </div>
-      <div class="heading_container">
-        <h3>
-          Give your review
-        </h3>
-      </div>
       <div class="row">
         <div class="col-md-6">
+                <div class="heading_container">
+                  <h3>
+                    Give your review
+                  </h3>
+                </div>
           <div class="form_container">
             <form id="reviewForm" action="">
               <div>
-                <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" id="ReviewName" class="form-control" placeholder="Your Name" required />
               </div>
               <div>
-                <textarea type="text" id="description" class="form-control"
-                  placeholder="Share your experience (optional)" rows="10">
-            </textarea>
+                <textarea type="text" id="ReviewDescription" class="form-control"
+                  placeholder="Share your experience (optional)"></textarea>
               </div>
               <div>
                 <select id="stars" class="form-control nice-select wide" required>
@@ -312,7 +312,7 @@
               </div>
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">Upload food image (optional)</label>
-                <input class="form-control" type="file" id="images">
+                <input class="form-control" type="file" id="images" multiple>
               </div>
 
               <div class="btn_box">
@@ -323,10 +323,12 @@
             </form>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="map_container">
-            <div id="googleMap"></div>
-          </div>
+        <div class="col-md-6 rating_carousel_container" >
+        <div class="wrapper" id="ratingCarousel"></div>
+          <a class="more_ratings_btn_box" style="background-color:#FFBE33;" href="./ratings.html"> View all ratings</a>
+           </div>
+           
+         </div>
         </div>
       </div>
   </section>
@@ -421,10 +423,12 @@
   <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
-  <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <!-- nice select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!--fontawesome-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+    integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- custom js -->
   <script src="js/custom.js"></script>
   <!-- Google Map -->

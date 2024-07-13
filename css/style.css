@@ -5,6 +5,63 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
+@media(max-width:768px){ 
+            .rating-container{
+            display:flex;
+            justify-content: center;
+            }}
+            .wrapper{
+              display: flex;
+              gap: 20px;
+              width: 300px;
+              overflow-x: scroll;
+              scroll-snap-type: x mandatory;
+            }
+            .rating_carousel_container{
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+            }
+            .card{
+              scroll-snap-align: center;
+              box-sizing: border-box;
+              padding: 20px 30px;
+              flex-shrink: 0;
+            }
+
+            .rating-card {
+              width: 300px;
+              border: 1px inset rgb(225, 219, 219);
+              border-radius: 5px;
+              margin-bottom: 20px;
+            }
+
+            .rating-card > .item {
+              margin: 20px 25px 0;
+            }
+
+             .rating-card> .item img {
+              width: 200px;
+              margin-bottom: 20px;
+            }
+            .more_ratings_btn_box{
+              margin-top: 15px;
+  border: none;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 10px 55px;
+  background-color: #ffbe33;
+  color: #ffffff;
+  border-radius: 45px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: none;
+            }
+            .more_ratings_btn_box:hover{
+              background-color: #e69c00 !important;
+              color: #ffffff !important;
+            }
 
 .layout_padding {
   /* padding: 0px 0; */
@@ -32,7 +89,9 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   font-family: 'Dancing Script', cursive;
 }
 
@@ -732,6 +791,7 @@ a:focus {
 
 .book_section {
   position: relative;
+  margin: max(4vh,45px);
 }
 
 .book_section .heading_container {
@@ -773,7 +833,7 @@ a:focus {
   font-size: 16px;
 }
 
-.book_section .form_container button {
+.book_section .form_container button  {
   margin-top: 15px;
   border: none;
   text-transform: uppercase;

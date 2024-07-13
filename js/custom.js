@@ -10,25 +10,6 @@
 
 // isotope js
 const api = "http://localhost:3500/";
-$(window).on('load', function () {
-    $('.filters_menu li').click(function () {
-        $('.filters_menu li').removeClass('active');
-        $(this).addClass('active');
-
-        var data = $(this).attr('data-filter');
-        $grid.isotope({
-            filter: data
-        })
-    });
-
-    var $grid = $(".grid").isotope({
-        itemSelector: ".all",
-        percentPosition: false,
-        masonry: {
-            columnWidth: ".all"
-        }
-    })
-});
 
 $(document).ready(function() {
   //Banner
@@ -56,11 +37,10 @@ $(document).ready(function() {
       .then((offer) => {
         const offerRow = $("#offerRow");
 
-        // Populate the select element with options
         offer.data.forEach((data) => {
           console.log(data);
           offerRow.append(
-            `<div class="col-md-6  ">
+            `<div class="col-md-6 ">
             <div class="box ">
               <div class="img-box">
                 <img src="${api}${data.image}" alt="">
@@ -83,16 +63,37 @@ $(document).ready(function() {
         alert("An error occurred while fetching offers");
         console.log(error);
       });
- //menu     
+ //menu script   
           fetch(api + "api/products")
             .then((response) => response.json())
             .then((menu) => {
               const menuGrid = $("#menuGrid");
+              const menuGrid_home = $('#menuGrid_home')
+              const items = menu.data 
+              if(items.length < 5){
+                items.forEach((item)=>{
+                  showmenu(menuGrid_home,item)
+                })
+              }
+              else{
+                for(i=0;i<=5;i++){
+                  showmenu(menuGrid_home,items[i])
+                }
+              }
 
-              // Populate the select element with options
-              menu.data.forEach((data) => {
-                console.log(data);
-                menuGrid.append(
+              items.forEach((item) => {
+                showmenu(menuGrid, item);
+              });
+               }
+            )
+            .catch((error) => {
+              // Handle errors
+              alert("An error occurred while fetching menu");
+              console.log(error);
+            });
+// for showing menu
+              function showmenu(id, data) {
+                id.append(
                   `<div class="col-sm-6 col-lg-4 all pizza">
             <div class="box">
               <div>
@@ -114,13 +115,7 @@ $(document).ready(function() {
             </div>
           </div>`
                 );
-              });
-            })
-            .catch((error) => {
-              // Handle errors
-              alert("An error occurred while fetching menu");
-              console.log(error);
-            });
+              }
   //Time slots
   fetch("http://localhost:3500/api/available-time-slots") // Replace with your API endpoint
     .then((response) => response.json())
@@ -144,10 +139,169 @@ $(document).ready(function() {
       // Handle errors
       alert("An error occurred while fetching time slots: " + error);
     });
-})
-  // Fetch time slots from the API
-  
-//booking script
+    //fetch Ratings
+
+   fetch(api + "api/ratings")
+    .then((response) => response.json())
+    .then((response) => {
+      displayRatings(response.data);
+      ratingscarousel(response.data);
+    })
+    .catch((error) => {
+      alert("An error occurred while fetching ratings");
+      console.log(error);
+    });
+
+function displayRatings(data) {
+  const ratingsContainer = $('#ratingspage');
+  data.forEach(rating => {
+    const mainContainer = $("<div>").addClass("rating-container col");
+    const cardContainer = $('<div>').addClass('rating-card');
+    const ratingCard = $('<div>').addClass('item');
+    const nameElement = $('<h4>').text(rating.name);
+    const descriptionElement = rating.description ? $('<p>').text(rating.description) : '';
+    const starContainer = $("<p>").addClass('starcontainer');
+    if(rating.ratings < 5){
+      const remain = 5 - rating.ratings;
+      for (let i = 1; i <= rating.ratings; i++){
+        const stars = '<i class="fa-solid fa-star" style="color: #FFD43B;"></i>';
+        starContainer.append(stars);
+      }
+      for(let j = 1; j <= remain; j++){
+        const stars = '<i class="fa-regular fa-star" style="color:rgb(212, 214, 214);"></i>';
+        starContainer.append(stars);
+      }
+      ratingCard.append(nameElement, starContainer, descriptionElement);
+    }
+    if (rating.image && rating.image.length > 0) {
+      const imagesContainer = $("<div>").addClass('rating_img');
+      rating.image.forEach(imageUrl => {
+        const imgElement = $('<img>').attr('src', api+imageUrl).attr('alt', 'Rating Image');
+        imagesContainer.append(imgElement);
+      });
+      ratingCard.prepend(imagesContainer);
+    }
+    cardContainer.append(ratingCard);
+    mainContainer.append(cardContainer);
+    ratingsContainer.append(mainContainer);
+  });
+}
+
+function ratingscarousel(data) {
+  const ratingsContainer = $("#ratingCarousel");
+  if (data.length < 5){
+    data.forEach((rating) => {
+      const cardContainer = $("<div>").addClass("rating-card .card");
+      const ratingCard = $("<div>").addClass("item");
+      const nameElement = $("<h4>").text(rating.name);
+      const descriptionElement = rating.description ? $("<p>").text(rating.description) : "";
+      const starContainer = $("<p>").addClass("starcontainer");
+      if (rating.ratings < 5) {
+        const remain = 5 - rating.ratings;
+        for (let i = 1; i <= rating.ratings; i++) {
+          const stars = '<i class="fa-solid fa-star" style="color: #FFD43B;"></i>';
+          starContainer.append(stars);
+        }
+        for (let j = 1; j <= remain; j++) {
+          const stars = '<i class="fa-regular fa-star" style="color:rgb(212, 214, 214);"></i>';
+          starContainer.append(stars);
+        }
+        ratingCard.append(nameElement, starContainer, descriptionElement);
+      }
+      if (rating.image && rating.image.length > 0) {
+        const imagesContainer = $("<div>").addClass("rating_img");
+        rating.image.forEach((imageUrl) => {
+          const imgElement = $("<img>").attr("src", api + imageUrl).attr("alt", "Rating Image");
+          imagesContainer.append(imgElement);
+        });
+        ratingCard.prepend(imagesContainer);
+      }
+      cardContainer.append(ratingCard);
+      ratingsContainer.append(cardContainer);
+    });
+  } else {
+    for (let l = 0; l < 5; l++) {
+      const cardContainer = $("<div>").addClass("rating-card card");
+      const ratingCard = $("<div>").addClass("item");
+      const nameElement = $("<h4>").text(data[l].name);
+      const descriptionElement = data[l].description ? $("<p>").text(data[l].description) : "";
+      const starContainer = $("<p>").addClass("starcontainer");
+      if (data[l].ratings < 5) {
+        const remain = 5 - data[l].ratings;
+        for (let i = 1; i <= data[l].ratings; i++) {
+          const stars = '<i class="fa-solid fa-star" style="color: #FFD43B;"></i>';
+          starContainer.append(stars);
+        }
+        for (let j = 1; j <= remain; j++) {
+          const stars = '<i class="fa-regular fa-star" style="color:rgb(212, 214, 214);"></i>';
+          starContainer.append(stars);
+        }
+        ratingCard.append(nameElement, starContainer, descriptionElement);
+      }
+      if (data[l].image && data[l].image.length > 0) {
+        const imagesContainer = $("<div>").addClass("rating_img");
+        data[l].image.forEach((imageUrl) => {
+          const imgElement = $("<img>").attr("src", api + imageUrl).attr("alt", "Rating Image");
+          imagesContainer.append(imgElement);
+        });
+        ratingCard.prepend(imagesContainer);
+      }
+      cardContainer.append(ratingCard);
+      ratingsContainer.append(cardContainer);
+    }
+  }
+}
+$(document).ready(function () {
+  let slides = $('.card');
+
+  function addActive(slide) {
+    slide.addClass('active');
+  }
+
+  function removeActive(slide) {
+    slide.removeClass('active');
+  }
+
+  addActive(slides.eq(0));
+  setInterval(function () {
+    slides.each(function (index) {
+      if (index + 1 === slides.length) {
+        addActive(slides.eq(0));
+        setTimeout(function () {
+          removeActive(slides.eq(index));
+        }, 350);
+        return false; // Break the .each() loop
+      }
+      if ($(this).hasClass("active")) {
+        setTimeout(function () {
+          removeActive(slides.eq(index));
+        }, 350);
+        addActive(slides.eq(index + 1));
+        return false; // Break the .each() loop
+      }
+    });
+  }, 1500);
+});
+
+// rating section owl carousel
+$(".rating-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  nav: false,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 1,
+    },
+    1000: {
+      items: 1,
+    },
+  },
+});
+
+//booking form script
 $(document).ready(function () {
   $("#bookingForm").on("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
@@ -164,7 +318,7 @@ $(document).ready(function () {
     };
     // Send the form data to the API
     $.ajax({
-      url: "http://localhost:3500/api/bookings", // Replace with your API endpoint
+      url: api + "api/bookings", // Replace with your API endpoint
       type: "POST",
       data: JSON.stringify(formData),
       contentType: "application/json",
@@ -179,32 +333,46 @@ $(document).ready(function () {
     });
   });
 });
+//review form script
 $(document).ready(function () {
   $("#reviewForm").on("submit", async function (event) {
     event.preventDefault();
 
     let formData = new FormData();
-    let name = $("#name").val();
+    let name = $("#ReviewName").val();
     let rating = $("#stars").val();
-    let description = $("#description").val();
-    let image = $("#images")[0].files[0]; // Get the first image file
+    let description = $("#ReviewDescription").val();
+    let images = $("#images")[0].files;
 
     formData.append("name", name);
-    formData.append("ratings", rating);
-    formData.append("description",description);
+    formData.append("description", description);
+    formData.append("ratings",rating);
+    
 
-    if (image) {
-      let compressedImage = await compressionFunction(image);
-      formData.append("image", compressedImage);
-    }
+    // Function to handle image compression and form data appending
+    const appendCompressedImages = async () => {
+      const compressedImages = await Promise.all(
+        Array.from(images).map((image) => compressionFunction(image))
+      );
+      compressedImages.forEach((compressedImage, index) => {
+        formData.append("image", compressedImage);
+      });
+      for (const value of formData.values()) {
+        console.log(value);
+      }
+    };
+
+    await appendCompressedImages();
+    
     $.ajax({
       url: "http://localhost:3500/api/create-Ratings",
       type: "POST",
       data: formData,
-      processData: false, // prevent jQuery from automatically transforming the data into a query string
-      contentType: false, // prevent jQuery from setting the Content-Type request header
+      processData: false,
+      contentType: false,
       success: function (response) {
         alert("Review submitted successfully!");
+        console.log(response, "this is my data");
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error:", textStatus, errorThrown);
@@ -224,8 +392,8 @@ $(document).ready(function () {
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          const maxWidth = 800; // Set maximum width
-          const maxHeight = 800; // Set maximum height
+          const maxWidth = 800;
+          const maxHeight = 800;
           let width = img.width;
           let height = img.height;
 
@@ -258,39 +426,5 @@ $(document).ready(function () {
   }
 });
 
-
-
-/** google_map js **/
-// function myMap() {
-//     var mapProp = {
-//         center: new google.maps.LatLng(40.712775, -74.005973),
-//         zoom: 18,
-//     };
-//     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-// }
-
-// client section owl carousel
-$(".client_owl-carousel").owlCarousel({
-    loop: true,
-    margin: 0,
-    dots: false,
-    nav: true,
-    navText: [],
-    autoplay: true,
-    autoplayHoverPause: true,
-    navText: [
-        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-    ],
-    responsive: {
-        0: {
-            items: 1
-        },
-        768: {
-            items: 2
-        },
-        1000: {
-            items: 2
-        }
-    }
-});
+}
+);
