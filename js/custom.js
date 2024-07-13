@@ -63,15 +63,37 @@ $(document).ready(function() {
         alert("An error occurred while fetching offers");
         console.log(error);
       });
- //menu     
+ //menu script   
           fetch(api + "api/products")
             .then((response) => response.json())
             .then((menu) => {
               const menuGrid = $("#menuGrid");
+              const menuGrid_home = $('#menuGrid_home')
+              const items = menu.data 
+              if(items.length < 5){
+                items.forEach((item)=>{
+                  showmenu(menuGrid_home,item)
+                })
+              }
+              else{
+                for(i=0;i<=5;i++){
+                  showmenu(menuGrid_home,items[i])
+                }
+              }
 
-              menu.data.forEach((data) => {
-                console.log(data);
-                menuGrid.append(
+              items.forEach((item) => {
+                showmenu(menuGrid, item);
+              });
+               }
+            )
+            .catch((error) => {
+              // Handle errors
+              alert("An error occurred while fetching menu");
+              console.log(error);
+            });
+// for showing menu
+              function showmenu(id, data) {
+                id.append(
                   `<div class="col-sm-6 col-lg-4 all pizza">
             <div class="box">
               <div>
@@ -93,13 +115,7 @@ $(document).ready(function() {
             </div>
           </div>`
                 );
-              });
-            })
-            .catch((error) => {
-              // Handle errors
-              alert("An error occurred while fetching menu");
-              console.log(error);
-            });
+              }
   //Time slots
   fetch("http://localhost:3500/api/available-time-slots") // Replace with your API endpoint
     .then((response) => response.json())
@@ -175,7 +191,7 @@ function ratingscarousel(data) {
   const ratingsContainer = $("#ratingCarousel");
   if (data.length < 5){
     data.forEach((rating) => {
-      const cardContainer = $("<div>").addClass("rating-card card");
+      const cardContainer = $("<div>").addClass("rating-card .card");
       const ratingCard = $("<div>").addClass("item");
       const nameElement = $("<h4>").text(rating.name);
       const descriptionElement = rating.description ? $("<p>").text(rating.description) : "";
