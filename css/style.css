@@ -63,9 +63,6 @@ body {
               color: #ffffff !important;
             }
 
-.layout_padding {
-  /* padding: 0px 0; */
-}
 
 .layout_padding2 {
   padding: 75px 0;
@@ -221,10 +218,7 @@ a:focus {
   padding: 0;
 }
 
-.custom_nav-container .navbar-nav {
-  /* padding-left: 18%; */
-  /* float: right; */
-}
+
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
   padding: 5px 20px;
