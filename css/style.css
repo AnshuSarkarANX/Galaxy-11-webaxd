@@ -762,6 +762,16 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
 }
+ .book_table_btn{
+  position: absolute; bottom: 30%;
+   left: 27%;
+   transform: translate(-50%, 50%);
+ }
+.banner_bookTable_btn{
+  color: white; 
+  background: #ff5722; 
+  padding:15px 35px;
+  border-radius: 30px; }
 
 .about_section .img-box {
   position: relative;
@@ -769,20 +779,37 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center; 
+   justify-content: center;
 }
 
 .about_section .img-box img {
   width: 100vw;
   height: 100vh;
 }
-
+.for_mobile{
+  display: none;
+}
+.for_pc{
+  display: block;
+}
 @media only screen and (max-width: 768px){
   .about_section .img-box img {
   width: 45vw;
   position: relative;
   height: 35vh;
+} 
+ .book_table_btn{
+  position: absolute; 
+  bottom: 20%; 
+  left: 50%; 
+  transform: translate(-50%, 50%);
+ }
+.for_mobile{
+  display: block;
+}
+.for_pc{
+  display: none;
 }
 
 }
