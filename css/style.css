@@ -281,39 +281,7 @@ a:focus {
 }
 
 .user_option .cart_link svg {
-  width: 17px;
-  height: auto;
-  fill: #ffffff;
-  margin-bottom: 2px;
-}
-
-.user_option .cart_link:hover svg {
-  fill: #ffbe33;
-}
-
-.user_option .order_online {
-  display: inline-block;
-  padding: 8px 30px;
-  background-color: #ffbe33;
-  color: #ffffff;
-  border-radius: 45px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: none;
-}
-
-.user_option .order_online:hover {
-  background-color: #e69c00;
-}
-
-.custom_nav-container .navbar-toggler {
-  outline: none;
-}
-
-.custom_nav-container .navbar-toggler {
-  padding: 0;
-  width: 37px;
-  height: 42px;
+  widt
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
