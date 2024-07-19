@@ -17,14 +17,26 @@ $(document).ready(function() {
     .then((response) => response.json())
     .then((image) => {
       const carousel = $("#carouselDiv");
-      // Populate the select element with options
-      image.data.forEach((data) => {
-        carousel.append(
-          `"<div class="carousel-item"  style="height: 100%;">
+       if (window.matchMedia("(max-width: 768px)").matches) {
+               image.data.forEach((data) => {
+                 carousel.append(
+                   `"<div class="carousel-item"  style="height: 100%;">
+          <img src="${api}${data.mobileImage}" alt="Image 3" style="width: 100%; height: 100%; object-fit: cover;"/>
+          </div>"`
+                 );
+               });
+       } 
+       else{
+              image.data.forEach((data) => {
+                carousel.append(
+                  `"<div class="carousel-item"  style="height: 100%;">
           <img src="${api}${data.image}" alt="Image 3" style="width: 100%; height: 100%; object-fit: cover;"/>
           </div>"`
-        );
-      });
+                );
+              });
+       }
+      // Populate the select element with options
+
     })
     .catch((error) => {
       // Handle errors
