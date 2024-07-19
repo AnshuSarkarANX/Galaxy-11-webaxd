@@ -57,7 +57,7 @@ exports.login = (req, res) => {
   loginData = {};
   loginData.email = req.cookies.email ? req.cookies.email : undefined;
   loginData.password = req.cookies.password ? req.cookies.password : undefined;
-  res.render("./admin/login.ejs", {
+  res.render("/admin/login.ejs", {
     title: "admin || login",
     message: req.flash("message"),
     error: req.flash("error"),
