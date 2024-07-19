@@ -21,14 +21,13 @@ const AdminRoute = require('./Route/AdminRoute');
 
 
 
-app.use(cors(
-    {
-        origin: ["https://galaxy-11-api.vercel.app/"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-
-));
+app.use(
+  cors({
+    origin: ["https://galaxy-11-webaxd.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
