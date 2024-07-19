@@ -8,6 +8,7 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const cookieparser = require('cookie-parser')
 const adminauth = require('./middleware/AdminAuth')
+const MemoryStore = require("memorystore")(session);
 
 
 const cors = require('cors');
@@ -38,12 +39,17 @@ app.use(bodyparser.json());
 
 app.use(flash());
 app.use(cookieparser());
-app.use(session({
+app.use(
+  session({
     cookie: { maxAge: 5000 },
-    secret: 'nodejs',
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
+    secret: "nodejs",
     resave: false,
-    saveUninitialized: false
-}))
+    saveUninitialized: false,
+  })
+);
 
 
 app.use('/uploads', express.static('uploads'))
