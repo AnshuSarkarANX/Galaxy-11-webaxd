@@ -1,0 +1,129 @@
+<%-include('common/head')%>
+
+    <body class="sb-nav-fixed">
+        <%-include('common/topbar')%>
+            <div id="layoutSidenav">
+                <%-include('common/sidebar')%>
+                    <div id="layoutSidenav_content">
+                        <%if(message.length>0){%>
+                            <div class="alert alert-success" role="alert">
+                                <%=message%>
+                              </div>
+                              <%}%>
+                        
+                              <%if(error.length>0){%>
+                                <div class="alert alert-danger" role="alert">
+                                    <%=error%>
+                                  </div>
+                                  <%}%>
+                        <main>
+                            <div class="container-fluid px-4">
+                                <h1 class="mt-4">Banner</h1>
+                                <!-- <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol> -->
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                       
+
+                                    <!-- <a href="/admin/add-product" class="btn btn-success">Add-Student</a> -->
+
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0">
+                                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#exampleModal">Add Banner</button>
+                                        </h6>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add Banner</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="/admin/create-Banner" method="post"
+                                                            enctype="multipart/form-data">
+                                                         
+                                                            <!-- <div class="form-group">
+                                                                <label for="description" class="col-form-label">Banner
+                                                                    Details:</label>
+                                                                <input type="text" class="form-control" id="description"
+                                                                    name="description" placeholder="Product Details">
+                                                            </div> -->
+
+                                                            <div class="form-group">
+                                                                <label for="image" class="col-form-label">Image:</label>
+                                                                <input type="file" class="form-control" id="image"
+                                                                    name="image">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="image" class="col-form-label">Mobile Image:</label>
+                                                                <input type="file" class="form-control" id="image"
+                                                                    name="mobileImage">
+                                                            </div>
+                                                            <div class="modal-footer form-group">
+                                                                <label class="col-form-label"></label>
+
+                                                                <input type="submit" class="btn btn-primary"
+                                                                    value="submit">
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="datatablesSimple">
+                                            <thead>
+                                                <tr>
+                                                    <th>Image</th>
+                                                    <th>Mobile Image</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Image</th>
+                                                    <th>Mobile Image</th>
+                                                    <th>Action</th>
+                                                    
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <!-- <%let count=1%> -->
+                                                <%if(displayData.length>0){
+                                                    for(let data2 of displayData){%>
+                                                    <tr>
+                                                        <td><img src="/<%-data2.image%>" alt="" height="50px"
+                                                                width="50px"></td>
+                                                        <td><img src="/<%-data2.mobileImage%>" alt="" height="50px"
+                                                                width="50px"></td>
+
+                                                        
+                                                        <!-- <td>
+                                                            <%=data2.description%>
+                                                        </td> -->
+                                                        <td><a href="/admin/deleteBanner/<%= data2._id%>" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash"></i></a></td>
+                                                    </tr>
+                                                    <%}}%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                        <%-include('common/footer')%>
+                    </div>
+            </div>
+
+    </body>
+
+    </html>
