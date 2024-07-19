@@ -24,8 +24,8 @@ const AdminRoute = require('./Route/AdminRoute');
 app.use(
   cors({
     origin: [
-      "https://galaxy-11-webaxd.vercel.app/",
-      "https://galaxy-11-api.vercel.app/",
+      "https://galaxy-11-webaxd.vercel.app",
+      "https://galaxy-11-api.vercel.app"
     ],
     methods: ["POST", "GET"],
     credentials: true,
