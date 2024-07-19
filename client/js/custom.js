@@ -9,7 +9,7 @@
 
 
 // isotope js
-const api = "http://localhost:3500/";
+const api = "https://galaxy-11-api.vercel.app/";
 
 $(document).ready(function() {
   //Banner
@@ -129,7 +129,7 @@ $(document).ready(function() {
                 );
               }
   //Time slots
-  fetch("http://localhost:3500/api/available-time-slots") // Replace with your API endpoint
+  fetch(api + "api/available-time-slots") // Replace with your API endpoint
     .then((response) => response.json())
     .then((data) => {
       var timeSelect = $("#time");
@@ -377,7 +377,7 @@ $(document).ready(function () {
     await appendCompressedImages();
     
     $.ajax({
-      url: "http://localhost:3500/api/create-Ratings",
+      url: api + "api/create-Ratings",
       type: "POST",
       data: formData,
       processData: false,
