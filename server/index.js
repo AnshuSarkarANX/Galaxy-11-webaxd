@@ -13,7 +13,7 @@ const adminauth = require('./middleware/AdminAuth')
 const cors = require('cors');
 const path = require('path')
 const app = express();
-const PORT = process.env.PORT || 3500
+const PORT = process.env.PORT;
 const dbLink = process.env.MONGODB_URL;
 
 const ApiRoute = require('./Route/apiRoute');
