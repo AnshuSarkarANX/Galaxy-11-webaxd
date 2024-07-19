@@ -3,11 +3,11 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
-const jwt = require ('jsonwebtoken')
-const flash = require ('connect-flash')
-const session = require ('express-session')
-const cookieparser = require ('cookie-parser')
-const adminauth = require ('./middleware/AdminAuth')
+const jwt = require('jsonwebtoken')
+const flash = require('connect-flash')
+const session = require('express-session')
+const cookieparser = require('cookie-parser')
+const adminauth = require('./middleware/AdminAuth')
 
 
 const cors = require('cors');
@@ -21,7 +21,14 @@ const AdminRoute = require('./Route/AdminRoute');
 
 
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://galaxy-11-api.vercel.app/"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+
+));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
