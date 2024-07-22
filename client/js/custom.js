@@ -9,7 +9,7 @@
 
 
 // isotope js
-const api = "https://galaxy-11-api.vercel.app/";
+const api = "https://galaxy-11-webaxd.onrender.com/";
 
 $(document).ready(function() {
   //Banner
