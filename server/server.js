@@ -16,6 +16,7 @@ const path = require('path')
 const app = express();
 const PORT = process.env.PORT;
 const dbLink = process.env.MONGODB_URL;
+const SECRET = process.env.SECRET;
 
 const ApiRoute = require('./Route/apiRoute');
 const AdminRoute = require('./Route/AdminRoute');
@@ -45,7 +46,7 @@ app.use(
     store: new MemoryStore({
       checkPeriod: 86400000, // prune expired entries every 24h
     }),
-    secret: "nodejs",
+    secret: SECRET,
     resave: false,
     saveUninitialized: false,
   })
