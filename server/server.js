@@ -27,7 +27,9 @@ app.use(
   cors({
     origin: [
       "https://galaxy-11-webaxd.vercel.app",
-      "https://galaxy-11-webaxd.onrender.com"
+      "https://galaxy-11-webaxd.onrender.com",
+      "https://www.galaxy11cafe.com/",
+      "https://galaxy11cafe.com/",
     ],
     methods: ["POST", "GET"],
     credentials: true,
